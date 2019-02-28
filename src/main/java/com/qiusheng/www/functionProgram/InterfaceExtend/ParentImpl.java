@@ -12,4 +12,9 @@ public class ParentImpl implements Parent {
     public String getLastMessage() {
         return "huoqu";
     }
+
+    @Override
+    public void welcome(){
+
+    }
 }
