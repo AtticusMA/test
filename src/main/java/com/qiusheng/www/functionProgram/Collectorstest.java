@@ -15,7 +15,7 @@ import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.*;
 
 
-public class collectorstest {
+public class Collectorstest {
     public static void main(String args[]){
 
         Set<Integer> integerSet = new HashSet<Integer>(asList(4,3,2,1));
@@ -85,16 +85,16 @@ public class collectorstest {
                 name->new StringCombinerTest(",","{","}").add(name),StringCombinerTest::meger)).toString();
 
         System.out.println("名字最长的艺术家");
-        Artist artist1=SampleData.getThreeArtists().stream().max(collectors.artistComparator).orElseThrow(RuntimeException::new);
-        Artist artist2=SampleData.getThreeArtists().stream().max(collectors.artistComparator).orElse(new Artist("lll","meiyou"));
-        Optional<Artist> artist=SampleData.getThreeArtists().stream().max(collectors.artistComparator);
+        Artist artist1=SampleData.getThreeArtists().stream().max(CollecterComparator.artistComparator).orElseThrow(RuntimeException::new);
+        Artist artist2=SampleData.getThreeArtists().stream().max(CollecterComparator.artistComparator).orElse(new Artist("lll","meiyou"));
+        Optional<Artist> artist=SampleData.getThreeArtists().stream().max(CollecterComparator.artistComparator);
         if(artist.isPresent()){
 
             System.out.println(artist.get().toString());
         }
 
-        Artist artist3 = SampleData.getThreeArtists().stream().reduce((acc,value)->{return collectors.artistComparator.compare(acc,value)>0? acc:value; }).orElseThrow(RuntimeException::new);
-        Artist artist4 = SampleData.getThreeArtists().stream().collect(Collectors.maxBy(collectors.artistComparator)).orElseThrow(RuntimeException::new);
+        Artist artist3 = SampleData.getThreeArtists().stream().reduce((acc,value)->{return CollecterComparator.artistComparator.compare(acc,value)>0? acc:value; }).orElseThrow(RuntimeException::new);
+        Artist artist4 = SampleData.getThreeArtists().stream().collect(Collectors.maxBy(CollecterComparator.artistComparator)).orElseThrow(RuntimeException::new);
 
         System.out.println("计算单词出现的次数，固定的格式输出");
         Stream<String> stringStream =Stream.of("John", "Paul", "George", "John", "Paul", "John");
